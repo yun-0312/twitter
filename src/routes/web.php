@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controller\PostController;
 
 Route::view('/', 'welcome');
 
@@ -13,3 +14,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function() {
+    Route::redirect('settings', 'settings/profile');
+})
