@@ -4,30 +4,26 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 投稿の新規作成
             </h2>
-            <form enctype="multipart/form-data">
-                <div class="md:flex items-center mt-8">
-                    <div class="w-full flex flex-col">
-                        <label for="title" class="font-semibold leading-none mt-4">件名</label>
-                        <input type="text" name="title"
-                            class="w-auto py-2 pl-2 placeholder-gray-300 border border-gray-300 rounded-md" id="title">
-                    </div>
+    
+            <form wire:submit.prevent="save" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="title" class="block font-semibold">件名</label>
+                    <input type="text" id="title" wire:model="title" class="w-full px-2 py-2 border rounded-md" />
                 </div>
 
-                <div class="w-full flex flex-col">
-                    <label for="body" class="font-semibold leading-none mt-4">本文</label>
-                    <textarea name="body" class="w-auto py-2 pl-2 border border-gray-300 rounded-md" id="body" cols="30"
-                        rows="10"></textarea>
+                <div class="mb-4">
+                    <label for="body" class="block font-semibold">本文</label>
+                    <textarea id="body" wire:model="body" class="w-full px-2 py-2 border rounded-md" rows="6"></textarea>
                 </div>
 
-                <div class="w-full flex flex-col">
-                    <label for="image" class="font-semibold leading-none mt-4">画像 </label>
-                    <div>
-                        <flux:input id="image" type="file" name="image" />
-                    </div>
+                <div class="mb-4">
+                    <label for="image" class="block font-semibold">画像</label>
+                    <input type="file" id="image" wire:model="image" />
                 </div>
 
-                <flux:button variant="primary" type="submit" class="w-full mt-4">送信する</flux:button>
-
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                    送信する
+                </button>
             </form>
         </div>
     </div>
